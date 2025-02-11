@@ -1,28 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import java.time.LocalDate;
 
-/**
- * Classe que representa um registro de produção de leite.
- * Contém a identificação do animal, data e quantidade de leite produzido.
- *
- * @author SEU_NOME
- */
+
 public class RegistroProducao {
 
     @BsonProperty(value = "identificacao_animal")
-    private String identificacaoAnimal; // Identifica o animal produtor
+    private String identificacaoAnimal; 
 
     @BsonProperty(value = "data_coleta")
-    private LocalDate dataColeta; // Data do registro de produção
+    private LocalDate dataColeta; 
 
     @BsonProperty(value = "volume_leite")
-    private double volumeLeite; // Quantidade de leite produzido
+    private double volumeLeite; 
 
     public RegistroProducao() {}
 
@@ -32,7 +24,7 @@ public class RegistroProducao {
         this.volumeLeite = volumeLeite;
     }
 
-    // Getters e Setters
+    
     public String getIdentificacaoAnimal() {
         return identificacaoAnimal;
     }

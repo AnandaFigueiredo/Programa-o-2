@@ -12,30 +12,26 @@ import javafx.scene.control.PasswordField;
 import modelo.Usuario;
 import util.Dao;
 
-/**
- * Classe de controle para gerenciar usuários do sistema.
- * Permite visualizar, alterar e excluir usuários cadastrados.
- */
 public class GerenciarUsuarioControle {
 
     @FXML
-    private ComboBox<String> listaUsuarios; // ComboBox para exibir os identificadores cadastrados
+    private ComboBox<String> listaUsuarios; 
 
     @FXML
-    private TextField campoNomeCompleto; // Campo para visualizar e editar o nome
+    private TextField campoNomeCompleto; 
 
     @FXML
-    private TextField campoIdentificacao; // Campo para visualizar e editar o identificador (antigo login)
+    private TextField campoIdentificacao; 
 
     @FXML
-    private PasswordField campoChaveAcesso; // Campo para visualizar e editar a senha
+    private PasswordField campoChaveAcesso; 
 
     private Dao<Usuario> daoUsuario;
 
     @FXML
     private void initialize() {
         daoUsuario = new Dao<>(Usuario.class);
-        atualizarListaUsuarios(); // Preenche a ComboBox com os identificadores cadastrados
+        atualizarListaUsuarios(); 
     }
 
     private void atualizarListaUsuarios() {
@@ -44,7 +40,7 @@ public class GerenciarUsuarioControle {
             ObservableList<String> identificadores = FXCollections.observableArrayList();
 
             for (Usuario usuario : usuarios) {
-                identificadores.add(usuario.getIdentificacao()); // Nome correto do getter
+                identificadores.add(usuario.getIdentificacao()); 
             }
 
             listaUsuarios.setItems(identificadores);
@@ -63,9 +59,9 @@ public class GerenciarUsuarioControle {
                 Usuario usuario = daoUsuario.buscarPorChave("identificacao", usuarioSelecionado);
 
                 if (usuario != null) {
-                    campoNomeCompleto.setText(usuario.getNomeCompleto()); // Nome correto do getter
-                    campoIdentificacao.setText(usuario.getIdentificacao()); // Nome correto do getter
-                    campoChaveAcesso.setText(usuario.getChaveAcesso()); // Nome correto do getter
+                    campoNomeCompleto.setText(usuario.getNomeCompleto()); 
+                    campoIdentificacao.setText(usuario.getIdentificacao()); 
+                    campoChaveAcesso.setText(usuario.getChaveAcesso()); 
                 }
             } catch (Exception e) {
                 exibirAlertaErro("Erro ao buscar os dados do usuário: " + e.getMessage());

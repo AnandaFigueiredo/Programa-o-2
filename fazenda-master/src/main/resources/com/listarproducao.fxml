@@ -14,8 +14,8 @@
       <Label layoutX="208.0" layoutY="112.0" text="Brinco" />
       <TableView fx:id="tabelaRegistros" layoutX="89.0" layoutY="151.0" prefHeight="272.0" prefWidth="467.0">
         <columns>
-          <TableColumn fx:id="colunaDataColeta" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="colunaVolumeLeite" prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="colunaDataColeta" prefWidth="75.0" text="DATA" />
+          <TableColumn fx:id="colunaVolumeLeite" prefWidth="75.0" text="LITROS" />
         </columns>
       </TableView>
       <Label layoutX="134.0" layoutY="54.0" prefHeight="54.0" prefWidth="530.0" text="Consultar Produção Animal">

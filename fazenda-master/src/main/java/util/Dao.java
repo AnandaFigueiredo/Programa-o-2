@@ -13,10 +13,6 @@ import org.bson.Document;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 
-/**
- * Classe responsável pela persistência de objetos. 
- * @author José
- */
 public class Dao <T> {
 
     private final String URI = "mongodb://localhost:27017";
@@ -47,12 +43,7 @@ public class Dao <T> {
         return result.getDeletedCount() > 0;
     }
     
-    /**
-     * Retorna o objeto cuja chave for igual ao valor passado. 
-     * @param chave o campo pelo qual o objeto vai ser buscado
-     * @param valor o valor da chave
-     * @return O objeto correspondente à chave ou null caso não exista. 
-     */
+    
     public T buscarPorChave(String chave, String valor){ 
          T retorno = collection.find(new Document(chave, valor)).first();
          return retorno;

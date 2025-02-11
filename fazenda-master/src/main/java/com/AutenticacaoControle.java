@@ -9,19 +9,13 @@ import javafx.event.ActionEvent;
 import util.Dao;
 import modelo.Usuario;
 
-/**
- * Classe de controle para autenticação do usuário.
- * Verifica o login e a senha do usuário para acesso ao sistema.
- *
- * @author SEU_NOME
- */
 public class AutenticacaoControle {
 
     @FXML
-    private TextField campoIdentificacao; // Campo de texto para o login
+    private TextField campoIdentificacao; 
 
     @FXML
-    private PasswordField campoChaveAcesso; // Campo de texto para a senha
+    private PasswordField campoChaveAcesso; 
 
     private Dao<Usuario> daoUsuario;
 
@@ -48,9 +42,9 @@ public class AutenticacaoControle {
             Usuario usuarioEncontrado = daoUsuario.buscarPorChave("identificacao", identificacao);
 
             if (usuarioEncontrado != null && usuarioEncontrado.getChaveAcesso().equals(chaveAcesso)) {
-                App.setRoot("menu"); // Substituição de Principal.alterarTela()
+                App.setRoot("menu"); 
 
-                // Lógica para trocar a cena ou prosseguir no sistema
+                
             } else {
                 exibirAlerta("Erro", "Usuário ou senha inválidos.", Alert.AlertType.ERROR);
             }

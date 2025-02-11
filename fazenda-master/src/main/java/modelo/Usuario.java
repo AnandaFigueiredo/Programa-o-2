@@ -1,20 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
-/**
- * Classe que representa um usuário do sistema.
- * Contém as informações de identificação, nome e credenciais de acesso.
- *
- * @author SEU_NOME
- */
+
 public class Usuario {
     
-    private String identificacao; // Identificação única do usuário
-    private String nomeCompleto; // Nome completo do usuário
-    private String chaveAcesso; // Senha do usuário
+    private String identificacao; 
+    private String nomeCompleto; 
+    private String chaveAcesso; 
 
     public Usuario() {}
 
@@ -24,8 +15,7 @@ public class Usuario {
         this.chaveAcesso = chaveAcesso;
     }
 
-    // Getters e Setters
-    public String getIdentificacao() {
+        public String getIdentificacao() {
         return identificacao;
     }
 

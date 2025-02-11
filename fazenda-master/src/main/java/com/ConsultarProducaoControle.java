@@ -14,12 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import modelo.RegistroProducao;
 import util.Dao;
 
-/**
- * Classe de controle para consulta de produção de leite por período.
- * Permite filtrar e visualizar a produção de leite dentro de um intervalo de datas.
- *
- * @author SEU_NOME
- */
+
 public class ConsultarProducaoControle {
 
     @FXML
@@ -28,19 +23,19 @@ public class ConsultarProducaoControle {
     }
 
     @FXML
-    private DatePicker seletorDataInicio; // DatePicker para selecionar a data inicial
+    private DatePicker seletorDataInicio; 
 
     @FXML
-    private DatePicker seletorDataFim; // DatePicker para selecionar a data final
+    private DatePicker seletorDataFim; 
 
     @FXML
-    private TableView<RegistroProducao> tabelaRegistros; // TableView para exibir os registros de produção
+    private TableView<RegistroProducao> tabelaRegistros; 
 
     @FXML
-    private TableColumn<RegistroProducao, LocalDate> colunaDataColeta; // Coluna para exibir a data da coleta
+    private TableColumn<RegistroProducao, LocalDate> colunaDataColeta; 
 
     @FXML
-    private TableColumn<RegistroProducao, Double> colunaVolumeLeite; // Coluna para exibir o volume de leite
+    private TableColumn<RegistroProducao, Double> colunaVolumeLeite; 
 
     private Dao<RegistroProducao> daoProducao;
 
@@ -51,9 +46,10 @@ public class ConsultarProducaoControle {
     }
 
     private void configurarTabela() {
-        // Configuração das colunas da tabela
+        
         colunaDataColeta.setCellValueFactory(new PropertyValueFactory<>("dataColeta"));
         colunaVolumeLeite.setCellValueFactory(new PropertyValueFactory<>("volumeLeite"));
+        
     }
 
     @FXML
@@ -72,18 +68,17 @@ public class ConsultarProducaoControle {
         }
 
         try {
-            // Obtém todas as produções cadastradas
             List<RegistroProducao> registros = daoProducao.listarTodos();
             ObservableList<RegistroProducao> registrosFiltrados = FXCollections.observableArrayList();
 
-            // Filtra as produções com base no período selecionado
+            
             for (RegistroProducao registro : registros) {
                 if (!registro.getDataColeta().isBefore(dataInicio) && !registro.getDataColeta().isAfter(dataFim)) {
                     registrosFiltrados.add(registro);
                 }
             }
 
-            // Atualiza a tabela com os dados filtrados
+          
             tabelaRegistros.setItems(registrosFiltrados);
 
         } catch (Exception e) {

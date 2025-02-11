@@ -15,11 +15,11 @@ import util.Dao;
 
 public class CadastrarUsuarioControle {
     @FXML
-    private TextField campoIdentificacao; // Campo de login
+    private TextField campoIdentificacao; 
     @FXML
-    private TextField campoNomeCompleto;  // Campo de nome
+    private TextField campoNomeCompleto;  
     @FXML
-    private PasswordField campoChaveAcesso; // Campo de senha
+    private PasswordField campoChaveAcesso;
 
     private Dao<Usuario> daoUsuario;
 
@@ -82,6 +82,6 @@ public class CadastrarUsuarioControle {
 
     @FXML
     private void voltarParaMenu(ActionEvent event) throws IOException {
-        App.setRoot("menu"); // Método de navegação corrigido
+        App.setRoot("menu"); 
     }
 }

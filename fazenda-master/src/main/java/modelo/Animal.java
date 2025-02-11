@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
-/**
- * Classe que representa um animal registrado no sistema.
- * Contém informações sobre identificação, apelido e raça.
- *
- * @author SEU_NOME
- */
+
 public class Animal {
 
-    @BsonProperty(value="identificacao") // Identificação única do animal
+    @BsonProperty(value="identificacao") 
     private String identificacao;
     
     @BsonProperty(value="apelido")

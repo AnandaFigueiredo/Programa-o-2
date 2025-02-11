@@ -15,37 +15,35 @@ import util.Dao;
 public class GerenciarAnimalControle {
 
     @FXML
-    private ComboBox<String> listaIdentificacao; // ComboBox para listar os identificadores
+    private ComboBox<String> listaIdentificacao; 
 
     @FXML
-    private TextField campoNome; // Campo para visualizar e editar o nome
+    private TextField campoNome; 
 
     @FXML
-    private TextField campoRaca; // Campo para visualizar e editar a raça
+    private TextField campoRaca; 
 
     private Dao<Animal> daoAnimal;
 
     @FXML
     private void initialize() {
         daoAnimal = new Dao<>(Animal.class);
-        atualizarListaAnimais(); // Preenche a ComboBox com os identificadores cadastrados
+        atualizarListaAnimais(); 
     }
 
     private void atualizarListaAnimais() {
         try {
-            // Obtém todos os animais cadastrados
             List<Animal> animais = daoAnimal.listarTodos();
             ObservableList<String> identificadores = FXCollections.observableArrayList();
 
-            // Adiciona os identificadores na lista observável
             for (Animal animal : animais) {
                 identificadores.add(animal.getIdentificacao());
             }
 
-            // Define a lista de identificadores na ComboBox
+            
             listaIdentificacao.setItems(identificadores);
 
-            // Adiciona um evento para carregar os detalhes do animal selecionado
+            
             listaIdentificacao.setOnAction(event -> carregarDetalhesAnimal());
         } catch (Exception e) {
             exibirAlertaErro("Erro ao carregar a lista de animais: " + e.getMessage());
@@ -59,11 +57,10 @@ public class GerenciarAnimalControle {
 
         if (identificacaoSelecionada != null) {
             try {
-                // Obtém os detalhes do animal pelo identificador
+                
                 Animal animal = daoAnimal.buscarPorChave("identificacao", identificacaoSelecionada);
 
                 if (animal != null) {
-                    // Preenche os campos com os dados do animal
                     campoNome.setText(animal.getApelido());
                     campoRaca.setText(animal.getTipoRaca());
                 }
@@ -86,15 +83,13 @@ public class GerenciarAnimalControle {
         }
 
         try {
-            // Cria o objeto atualizado
             Animal animal = new Animal(identificacao, nome, raca);
-
-            // Atualiza o animal no banco de dados
+            
             daoAnimal.alterar("identificacao", identificacao, animal);
 
             exibirAlertaSucesso("Dados do animal atualizados com sucesso!");
             limparCampos();
-            atualizarListaAnimais(); // Atualiza a ComboBox após salvar
+            atualizarListaAnimais(); 
         } catch (Exception e) {
             exibirAlertaErro("Erro ao salvar alterações: " + e.getMessage());
             e.printStackTrace();
@@ -136,7 +131,6 @@ public class GerenciarAnimalControle {
         }
 
         try {
-            // Confirmação antes da exclusão
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Confirmação");
             alerta.setHeaderText("Excluir Animal");
@@ -146,11 +140,11 @@ public class GerenciarAnimalControle {
                 return;
             }
 
-            // Exclui o animal do banco de dados
+           
             daoAnimal.excluir("identificacao", identificacaoSelecionada);
             exibirAlertaSucesso("Animal removido com sucesso!");
 
-            // Atualiza a ComboBox e limpa os campos
+           
             limparCampos();
             atualizarListaAnimais();
         } catch (Exception e) {

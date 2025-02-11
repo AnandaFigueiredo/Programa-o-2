@@ -14,12 +14,6 @@ import modelo.RegistroProducao;
 import modelo.Animal;
 import util.Dao;
 
-/**
- * Classe de controle para consulta da produção de leite de um animal específico.
- * Permite visualizar a produção de um animal selecionado.
- *
- * @author SEU_NOME
- */
 public class ConsultarProducaoAnimalControle {
 
     @FXML
@@ -28,19 +22,18 @@ public class ConsultarProducaoAnimalControle {
     }
 
     @FXML
-    private ComboBox<String> listaIdentificacao; // ComboBox para selecionar o identificador do animal
+    private ComboBox<String> listaIdentificacao; 
 
     @FXML
-    private TableView<RegistroProducao> tabelaRegistros; // TableView para exibir as produções registradas
+    private TableView<RegistroProducao> tabelaRegistros; 
+    @FXML
+    private TableColumn<RegistroProducao, String> colunaDataColeta; 
 
     @FXML
-    private TableColumn<RegistroProducao, String> colunaDataColeta; // Coluna para exibir a data da coleta
+    private TableColumn<RegistroProducao, Double> colunaVolumeLeite; 
 
-    @FXML
-    private TableColumn<RegistroProducao, Double> colunaVolumeLeite; // Coluna para exibir o volume de leite
-
-    private Dao<Animal> daoAnimal; // DAO para animais
-    private Dao<RegistroProducao> daoProducao; // DAO para produções
+    private Dao<Animal> daoAnimal; 
+    private Dao<RegistroProducao> daoProducao; 
 
     @FXML
     private void initialize() {
@@ -52,7 +45,7 @@ public class ConsultarProducaoAnimalControle {
     }
 
     private void configurarTabela() {
-        // Configuração das colunas da tabela
+        
         colunaDataColeta.setCellValueFactory(new PropertyValueFactory<>("dataColeta"));
         colunaVolumeLeite.setCellValueFactory(new PropertyValueFactory<>("volumeLeite"));
     }
@@ -83,18 +76,18 @@ public class ConsultarProducaoAnimalControle {
         }
 
         try {
-            // Busca todas as produções do animal selecionado
+            
             List<RegistroProducao> registros = daoProducao.listarTodos();
             ObservableList<RegistroProducao> registrosFiltrados = FXCollections.observableArrayList();
 
-            // Filtra as produções pelo identificador do animal
+            
             for (RegistroProducao registro : registros) {
                 if (registro.getIdentificacaoAnimal().equals(identificacaoSelecionada)) {
                     registrosFiltrados.add(registro);
                 }
             }
 
-            // Atualiza a tabela com os dados filtrados
+            
             tabelaRegistros.setItems(registrosFiltrados);
 
         } catch (Exception e) {

@@ -14,12 +14,6 @@ import modelo.RegistroProducao;
 import modelo.Animal;
 import util.Dao;
 
-/**
- * Classe de controle para registrar a produção de leite dos animais.
- * Permite selecionar um animal, uma data e a quantidade de leite produzida.
- *
- * @author SEU_NOME
- */
 public class RegistrarProducaoControle {
 
     @FXML
@@ -28,16 +22,16 @@ public class RegistrarProducaoControle {
     }
 
     @FXML
-    private ComboBox<String> listaIdentificacao; // ComboBox para listar os identificadores dos animais
+    private ComboBox<String> listaIdentificacao; 
 
     @FXML
-    private DatePicker seletorDataColeta; // DatePicker para selecionar a data da coleta
+    private DatePicker seletorDataColeta; 
 
     @FXML
-    private TextField campoVolumeLeite; // TextField para registrar o volume de leite
+    private TextField campoVolumeLeite; 
 
-    private Dao<Animal> daoAnimal; // DAO para buscar animais
-    private Dao<RegistroProducao> daoProducao; // DAO para registrar a produção
+    private Dao<Animal> daoAnimal; 
+    private Dao<RegistroProducao> daoProducao; 
 
     @FXML
     private void initialize() {
@@ -51,7 +45,7 @@ public class RegistrarProducaoControle {
             List<Animal> animais = daoAnimal.listarTodos();
             ObservableList<String> identificadores = FXCollections.observableArrayList();
             for (Animal animal : animais) {
-                identificadores.add(animal.getIdentificacao()); // Certifique-se de que o método getIdentificacao() existe na classe Animal
+                identificadores.add(animal.getIdentificacao()); 
             }
             listaIdentificacao.setItems(identificadores);
         } catch (Exception e) {
@@ -78,10 +72,10 @@ public class RegistrarProducaoControle {
                 return;
             }
 
-            // Cria um novo registro de produção
+            
             RegistroProducao registro = new RegistroProducao(identificacao, dataColeta, volumeLeite);
 
-            // Salva no banco de dados
+            
             daoProducao.inserir(registro);
 
             exibirAlertaSucesso("Produção registrada com sucesso!");
